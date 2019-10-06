@@ -19,7 +19,7 @@ function useTodos() {
     const delIndex = todos.findIndex(({ id: todoId }) => id === todoId);
     if (delIndex > -1) {
       todos.splice(delIndex, 1);
-      setTodos(todos);
+      setTodos([...todos]);
     }
   };
   const editTodo = (id, newText) => {
@@ -29,7 +29,7 @@ function useTodos() {
         ...todos[editIndex],
         text: newText
       });
-      setTodos(todos);
+      setTodos([...todos]);
     }
   };
   const toggleTodo = (id) => {
@@ -43,11 +43,16 @@ function useTodos() {
         setTodos([...todos]);
       }
   }
+  const toggleAll = status => {
+    todos.forEach(todo => todo.status = status)
+    setTodos([...todos])
+  }
   return {
     add: addTodo,
     del: delTodo,
     edit: editTodo,
     toggle: toggleTodo,
+    toggleAll,
     todos,
   };
 }

@@ -1,0 +1,128 @@
+
+$checkedAllWidth: 80px;
+$labelWidth: 6px;
+
+.todo {
+  margin: 0 auto;
+  width: 500px;
+
+  &-container {
+    margin-top: 50px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
+  }
+}
+
+.todo-header {
+  display: flex;
+  padding: 16px 16px 16px 0;
+  border: none;
+  background: rgba(0, 0, 0, 0.003);
+  box-shadow: inset 0 -2px 1px rgba(0,0,0,0.03);
+
+  input {
+    font-size: 24px;
+    border: none;
+    padding: 2px;
+
+    &:focus {
+      border: none;
+      outline: none;
+    }
+  }
+
+  &-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: $checkedAllWidth;
+
+    label {
+      width: $labelWidth;
+      height: $labelWidth;
+      transform: rotate(45deg) translateY(-$labelWidth/2);
+      border: 5px solid #eee;
+      border-left: 5px solid transparent;
+      border-top: 5px solid transparent;
+    }
+
+    &--checked label{
+      border: 5px solid #999;
+      border-left: 5px solid transparent;
+      border-top: 5px solid transparent;
+    }
+  }
+}
+
+.todo-content {
+  li {
+    position: relative;
+    padding: 15px 5px 15px $checkedAllWidth;
+    font-size: 24px;
+    border-bottom: 1px solid #ededed;
+    color: #666;
+    cursor: pointer;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    &::before {
+      display: flex;
+      align-items: center;
+      position: absolute;
+      content: '(っ•̀ω•́)っ✎⁾⁾';
+      left: 2px;
+      top: 0;
+      width: $checkedAllWidth;
+      height: 100%;
+      font-size: 12px;
+      color: #9E7A7A;
+    }
+  }
+
+  .todo-item--done {
+    text-decoration: line-through;
+    color: #eee;
+
+    &::before {
+      content: 'o(*≧▽≦)ツ';
+      color: #DC9FB4;
+    }
+  }
+}
+
+.todo-footer {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  color: #999;
+  border-top: 1px solid #e6e6e6;
+
+  > span {
+    flex: 2;
+  }
+
+  &-status {
+    flex: 3;
+    display: flex;
+
+    .footer-status {
+      margin-right: 10px;
+      padding: 3px;
+      cursor: pointer;
+      border: 1px solid transparent;
+
+      &--active {
+        border: 1px solid rgba(175, 47, 47, 0.2);
+      }
+    }
+  }
+
+  .clear {
+    text-align: right;
+    cursor: pointer;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
